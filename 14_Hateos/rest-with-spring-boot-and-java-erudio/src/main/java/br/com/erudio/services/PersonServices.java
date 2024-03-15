@@ -47,6 +47,9 @@ public class PersonServices {
 	}
 	
 	public PersonVO create(PersonVO person) {
+
+		if(person == null) throw new RequiredObjectIsNullException();
+
 		logger.info("Creating one person!");
 		// recebo um VO e transformo em uma entity
 		var entity = DozerMapper.parseObject(person, Person.class);
@@ -57,6 +60,9 @@ public class PersonServices {
 	}
 	
 	public PersonVO update(PersonVO person) {
+
+		if(person == null) throw new RequiredObjectIsNullException();
+		
 		logger.info("Updating one person!");
 		
 		Person entity = repository.findById(person.getKey()).orElseThrow(() -> new ResourceNotFoundException("no records found for this ID!"));

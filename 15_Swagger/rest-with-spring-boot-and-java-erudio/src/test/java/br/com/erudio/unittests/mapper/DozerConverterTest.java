@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.com.erudio.data.vo.v1.BookVO;
 import br.com.erudio.data.vo.v1.PersonVO;
 import br.com.erudio.mapper.DozerMapper;
 import br.com.erudio.model.Person;
@@ -29,6 +30,16 @@ public class DozerConverterTest {
         assertEquals("Last Name Test0", output.getLastName());
         assertEquals("Addres Test0", output.getAddress());
         assertEquals("Male", output.getGender());
+    }
+    
+    @Test
+    public void parseEntityToBookVOTest() {
+    	BookVO output = DozerMapper.parseObject(inputObject.mockEntity(), BookVO.class);
+    	assertEquals(Long.valueOf(0L), output.getKey());
+    	assertEquals("Author Test0", output.getAuthor());
+    	assertEquals("Last Name Test0", output.getLastName());
+    	assertEquals("Addres Test0", output.getAddress());
+    	assertEquals("Male", output.getGender());
     }
 
     @Test
